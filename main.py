@@ -8,4 +8,3 @@ for line in file_open_students.readlines():
     if 'Хадаров Владимир' in data[1]:
         ocenka = int(data[4])
         id_work = data[2]
-        1
