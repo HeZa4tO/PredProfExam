@@ -24,13 +24,13 @@ for i in file_open_students:
 for i in range(len(students)):
     j = i
     t = students[i]
-    while j > 0 and students[j - 1].score > t.score:
+    while j > 0 and students[j - 1].score < t.score:
         students[j] = students[j - 1]
         j -= 1
     students[j] = t
 
 print(f'10 класс')
-print(f'1 место: {students[0].student_name[0]}. {students[0].student_name.split()[0]}')
-print(f'2 место: {students[1].student_name[0]}. {students[1].student_name.split()[0]}')
-print(f'3 место: {students[2].student_name[0]}. {students[2].student_name.split()[0]}')
+print(f'1 место: {students[0].student_name.split()[1][0]}. {students[0].student_name.split()[0]}')
+print(f'2 место: {students[1].student_name.split()[1][0]}. {students[1].student_name.split()[0]}')
+print(f'3 место: {students[2].student_name.split()[1][0]}. {students[2].student_name.split()[0]}')
 
