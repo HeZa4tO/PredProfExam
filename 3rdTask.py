@@ -1,9 +1,5 @@
 from random import randint, shuffle
 
-file_open_students = open('students.csv')
-file_redact_students = open('students_new.csv', 'w')
-
-print(file_open_students.readline())
 
 def create_login(user: str) -> str:
     data_user = user.split(' ')
@@ -19,24 +15,22 @@ def create_password() -> str:
     abc = [chr(randint(97, 122)) for _ in range(n_abc)]
     ABC = [chr(randint(65, 90)) for _ in range(n_ABC)]
     chars = [chr(randint(33, 47)) for _ in range(n_char)]
-    s = num + abc + ABC + chars
-    shuffle(s)
-    return ''.join(s)
+    password = num + abc + ABC + chars
+    shuffle(password)
+    return ''.join(password)
 
 
 def main():
-    login1 = create_login('Соколов Иван Иванович')
-    pass1 = create_password()
-
-    print(login1)
-    print(pass1)
-
-    login2 = create_login('Сербин Геннадий Михаилович')
-    pass2 = create_password()
-
-    print(login2)
-    print(pass2)
-
+    file_open_students = open('students.csv')
+    file_redact_students = open('students_new.csv', 'w')
+    students = []
+    h = file_open_students.readline()
+    for i in file_open_students.readlines():
+        s = i.split(',')
+        s.append(create_login(str(s[1])))
+        s.append(create_password())
+        students.append(s)
+    print(students)
 
 if __name__ == '__main__':
     main()
